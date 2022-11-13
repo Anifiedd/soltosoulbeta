@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Sol to Soul</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,700,1,0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,700,1,0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lobster&family=Luckiest+Guy&family=Pacifico&family=Roboto+Flex:opsz,slnt,wdth,wght,GRAD,XTRA,YOPQ,YTDE,YTLC@8..144,-3,55.6,221,-86,468,79,-135,514;8..144,-2,97.4,628,74,466,62,-140,470;8..144,-1,92.8,332,10,449,79,-158,514&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <style media="screen">
+    *{margin: 0;padding: 0;font-family:"Roboto Slab",sans-serif;}
+    :root {
+      --primary: #f9a825;
+      --primary-light: #ffd95a;
+      --primary-dark: #c17900;
+      --secondary: #ff6f00;
+      --secondary-light: #ffa040;
+      --secondary-dark: #c43e00;
+    }
+    body {
+      background: black;
+      overflow: hidden;
+    }
+    div {
+      border-radius: 25px;
+    }
+      div.slide {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        color: white;
+        display: grid;
+        grid-template-rows: 3fr 2fr;
+        grid-template-areas: "div" "div";
+        transition: .5s ease-in-out;
+        box-sizing: border-box;
+        padding: 15px;
+      }
+      div.slide h1 {
+        font-size: 64px;
+        color: rgba(255,255,255,0.9)
+      }
+      div.slide div {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+      }
+      div.slide div a {
+        text-decoration: none;
+        background: white;
+        color: black;
+        padding-left: 25px;
+        padding-right: 25px;
+        height: 50px;
+        border-radius: 55px;
+        margin: 10px;
+        box-sizing: border-box;
+        transition: 200ms;
+        background: rgba(255,255,255,0.9);
+        cursor: pointer;
+        font-family: "Roboto Flex";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      div.slide div a:hover {
+        box-shadow: 2px 2px 22px rgba(0,0,0,0.3);
+        transform: scale(1.05);
+        background: white;
+        cursor: pointer;
+      }
+      div.bye {
+        transform: translateX(100vw) scale(1.3) rotate(35deg);
+        opacity: 0;
+      }
+      #s1 {
+        background: #eeaf61;
+      }
+      #s2 {
+        background: #fb9062;
+      }
+      #s3 {
+        background: #ee5d6c;
+      }
+      #s4 {
+        background: #ce4993;
+      }
+      #s5 {
+        background: #6a0d83;
+      }
+      #s6 {
+        background: #290447;
+      }
+      input {
+        width: 300px;
+        height: 50px;
+        padding: 0 40px;
+        border: none;
+        border-radius: 55px;
+        outline: none;
+        box-sizing: border-box;
+      }
+      .preload {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: black;
+        z-index: 5 !important;
+        transition: opacity 2s ease-in .5s, transform 0s ease-in 2.5s;
+        border-radius: 0;
+      }
+      .byeload {
+        transform: translate(150vw, 150vh);
+        opacity: 0;
+      }
+      .homelink {
+        display: block;
+        position: absolute;
+        height: 60px;
+        color: white;
+        text-align: center;
+        font-size: 40px;
+        bottom: 0;
+        width: 100vw;
+        z-index: 4!important;
+        background: rgba(0,0,0,0.3);
+        border-top: 1px solid black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+      }
+      .homelink span {
+        font-size: 30px;
+        transition: 200ms;
+        cursor: pointer;
+      }
+      .homelink span:hover {
+        transform: scale(1.2);
+        text-shadow: 2px 2px 22px rgba(0,0,0,0.3);
+      }
+    </style>
+  </head>
+  <body onload=load()>
+    <a href="../../" class=homelink><span class="material-symbols-rounded">
+home
+</span></a>
+    <div class="slide" id=s6>
+      <div>
+        <h1>ready to send your inquiry?</h1>
+      </div>
+      <div>
+        <a href="" id=email>...</a>
+      </div>
+    </div>
+    <div class="slide" id=s5>
+    <div>
+      <h1>what's your name? (first and last)</h1>
+    </div>
+    <div>
+      <input type="text" id=name placeholder="type your name here.."></input>
+      <a onclick="flyaway('5');compose()">Next</a>
+    </div>
+    </div>
+    <div class="slide" id=s4>
+    <div>
+      <h1>how soon do you want to be here?</h1>
+    </div>
+    <div>
+      <a onclick="flyaway('4');option('4a')">Within a month</a>
+      <a onclick="flyaway('4');option('4b')">Within 2-4 months</a>
+      <a onclick="flyaway('4');option('4c')">Within 5-11 months</a>
+      <a onclick="flyaway('4');option('4d')">Within a year or more</a>
+    </div>
+    </div>
+    <div class="slide" id=s3>
+      <div>
+        <h1>how many people are going?</h1>
+      </div>
+      <div>
+        <a onclick="flyaway('3');option('3a')">Just one</a>
+        <a onclick="flyaway('3');option('3b')">2-3</a>
+        <a onclick="flyaway('3');option('3c')">4-6</a>
+        <a onclick="flyaway('3');option('3d')">7+</a>
+      </div>
+    </div>
+    </div>
+    <div class="slide" id=s2>
+      <div>
+        <h1>how long do you plan on staying?</h1>
+      </div>
+      <div>
+        <a onclick="flyaway('2');option('2a')">Less than 5 Days</a>
+        <a onclick="flyaway('2');option('2b')">6-10 Days</a>
+        <a onclick="flyaway('2');option('2c')">11-25 Days</a>
+        <a onclick="flyaway('2');option('2d')">More than 25 Days</a>
+      </div>
+    </div>
+    <div class="slide" id=s1>
+    <div>
+      <h1>which property do you want to stay in?</h1>
+    </div>
+    <div>
+      <a onclick="flyaway('1');option('1a')">Fun & Funky Flat</a>
+      <a onclick="flyaway('1');option('1b')">Sunny & Funky Apartment</a>
+      <a onclick="flyaway('1');option('1c')">Tropical Oasis</a>
+      <a onclick="flyaway('1');option('1d')">I'm unsure</a>
+    </div>
+    </div>
+    <div class="preload" id=prel></div>
+    <script type="text/javascript">
+    function load() {
+      document.getElementById("prel").classList.add("byeload");
+    }
+      function flyaway(a){
+        document.getElementById("s"+a).classList.add("bye");
+      }
+      function option(a){
+        window.sessionStorage.setItem(a.charAt(0), a.charAt(1));
+      }
+      function compose(){
+        let email;
+        const opt1 = window.sessionStorage.getItem("1");
+        const opt2 = window.sessionStorage.getItem("2");
+        const opt3 = window.sessionStorage.getItem("3");
+        const opt4 = window.sessionStorage.getItem("4");
+        const a1 = "Staying in {unit2} ";
+        const b1 = "Staying in {unit4} ";
+        const c1 = "Staying in {unit1} ";
+        const d1 = "Staying in {any} ";
+        const a2 = "for less than 5d ";
+        const b2 = "for 6-10d ";
+        const c2 = "for 11-25d ";
+        const d2 = "for more than 25d ";
+        const a3 = "with 1 person ";
+        const b3 = "with 2-3 people ";
+        const c3 = "with 4-6 people ";
+        const d3 = "with 7+ people ";
+        const a4 = "within a month.";
+        const b4 = "within 2-4 months.";
+        const c4 = "within 5-11 months.";
+        const d4 = "within a year or more.";
+        const name = " - "+document.getElementById("name").value;
+        if(opt1 == "a"){
+          email = a1;
+        } else if(opt1 == "b"){
+          email = b1;
+        } else if(opt1 == "c"){
+          email = c1;
+        } else if(opt1 == "d"){
+          email = d1;
+        }
+        console.log(email);
+        if(opt2 == "a"){
+          email = email+a2;
+        } else if(opt2 == "b"){
+          email = email+b2;
+        } else if(opt2 == "c"){
+          email = email+c2;
+        } else if(opt2 == "d"){
+          email = email+d2;
+        }
+        if(opt3 == "a"){
+          email = email+a3;
+        } else if(opt3 == "b"){
+          email = email+b3;
+        } else if(opt3 == "c"){
+          email = email+c3;
+        } else if(opt3 == "d"){
+          email = email+d3;
+        }
+        if(opt4 == "a"){
+          email = email+a4;
+        } else if(opt4 == "b"){
+          email = email+b4;
+        } else if(opt4 == "c"){
+          email = email+c4;
+        } else if(opt4 == "d"){
+          email = email+d4;
+        }
+        email=email+name;
+        console.log(email);
+        document.getElementById("email").setAttribute("href", "mailto:clos.riley@gmail.com?subject=Sol to Soul Inquiry&body="+email);
+        document.getElementById("email").innerHTML = "Send!";
+      }
+    </script>
+  </body>
+</html>

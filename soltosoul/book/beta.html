@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Sol to Soul Properties</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,700,1,0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lobster&family=Luckiest+Guy&family=Pacifico&family=Roboto+Flex:opsz,slnt,wdth,wght,GRAD,XTRA,YOPQ,YTDE,YTLC@8..144,-3,55.6,221,-86,468,79,-135,514;8..144,-2,97.4,628,74,466,62,-140,470;8..144,-1,92.8,332,10,449,79,-158,514&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Beta Booking page</title>
+    <style media="screen">
+      :root {
+        --primary: #f9a825;
+        --primary-light: #ffd95a;
+        --primary-dark: #c17900;
+        --secondary: #ff6f00;
+        --secondary-light: #ffa040;
+        --secondary-dark: #c43e00;
+      }
+      * {
+        font-family: "Roboto Slab", Roboto, sans-serif;
+        outline: none;
+        overflow-x: hidden;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      th, td {
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        box-sizing: border-box;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: 150ms;
+      }
+      td:hover {
+        background: var(--primary-light);
+        transform: scale(1.05);
+      }
+      td:active {
+        background: var(--primary);
+        transform: scale(1.1);
+      }
+      .greyCal {
+        color: grey;
+        cursor: pointer;
+      }
+      .greyCal:hover {
+        color: black;
+        background: inherit;
+        transform: scale(1.05);
+        cursor: pointer;
+      }
+      .greyCal:active {
+        transform: scale(1.1);
+        background: whitesmoke;
+      }
+      .currentDay {
+        color: var(--primary);
+        transform: scale(1.05);
+      }
+      .selected {
+        background: var(--secondary);
+        color: white;
+        text-shadow: 1px 1px 9px var(--secondary-dark);
+      }
+      .selected:hover {
+        background: var(--secondary-light);
+      }
+      .selected:active {
+        background: var(--secondary);
+      }
+      .daySelected {
+        background: var(--primary-light);
+        border-radius: 0px;
+      }
+      #loading {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10vw;
+        font-family: sans-serif;
+        font-weight: bold;
+        background: white;
+        z-index: 1000 !important;
+      }
+    </style>
+  </head>
+  <body onload=load()>
+    <div id="loading">
+      LOADING
+    </div>
+    <h1 id=month-year>MONTH/YEAR</h1>
+    <table>
+      <tr>
+        <th>S</th>
+        <th>M</th>
+        <th>T</th>
+        <th>W</th>
+        <th>T</th>
+        <th>F</th>
+        <th>S</th>
+      </tr>
+      <tr>
+        <td id=t11 onclick=select(this.id)>day</td>
+        <td id=t12>day</td>
+        <td id=t13>day</td>
+        <td id=t14>day</td>
+        <td id=t15>day</td>
+        <td id=t16>day</td>
+        <td id=t17>day</td>
+      </tr>
+      <tr>
+        <td id=t21>day</td>
+        <td id=t22>day</td>
+        <td id=t23>day</td>
+        <td id=t24>day</td>
+        <td id=t25>day</td>
+        <td id=t26>day</td>
+        <td id=t27>day</td>
+      </tr>
+      <tr>
+        <td id=t31>day</td>
+        <td id=t32>day</td>
+        <td id=t33>day</td>
+        <td id=t34>day</td>
+        <td id=t35>day</td>
+        <td id=t36>day</td>
+        <td id=t37>day</td>
+      </tr>
+      <tr>
+        <td id=t41>day</td>
+        <td id=t42>day</td>
+        <td id=t43>day</td>
+        <td id=t44>day</td>
+        <td id=t45>day</td>
+        <td id=t46>day</td>
+        <td id=t47>day</td>
+      </tr>
+      <tr>
+        <td id=t51>day</td>
+        <td id=t52>day</td>
+        <td id=t53>day</td>
+        <td id=t54>day</td>
+        <td id=t55>day</td>
+        <td id=t56>day</td>
+        <td id=t57>day</td>
+      </tr>
+    </table>
+    <div class=dayscontainer>
+      days:
+    <input class=days type="range" min="3" max="30" value="3" id=daysrange><br>
+  </div>
+    debug data
+    <select>
+      <option id=year>
+      <option id=month>
+      <option id=day>
+      <option id=weekday>
+      <option id=firstday>
+      <option id=maxdays>
+      <option id=thisweek>
+    </select>
+    <a href="../index.html">home</a>
+        <script type="text/javascript">
+        const d = new Date();
+        const year = d.getFullYear();
+        const month = d.getMonth() + 1;
+        const day = d.getDate();
+        const weekday = d.getDay() + 1;
+        const dt = new Date(year+"-"+month+"-01");
+        const firstday = dt.getDay() + 2;
+        const thisweek = Math.ceil((day+firstday) / 7);
+        const monthName = d.toLocaleString('default', { month: 'long' });
+        const selectedDays = document.getElementById("daysrange");
+        console.log(monthName);
+        if ([1,3,5,7,8,10,12].includes(month)){
+          var max = 31;
+        } else if ([4,6,9,11].includes(month)){
+          var max = 30;
+        } else if (month == 2) {
+          var max = 28;
+        }
+        if ([1,3,5,7,8,10,12].includes(month-1)){
+          var maxbefore = 31;
+        } else if ([4,6,9,11].includes(month-1)){
+          var maxbefore = 30;
+        } else if (month-1 == 2) {
+          var maxbefore = 28;
+        }
+        const de = new Date(year+"-"+month+"-"+max);
+        const endDay = de.getDay() + 2;
+        document.getElementById("maxdays").innerHTML = "max"+max;
+          function load() {
+            window.sessionStorage.removeItem("selected");
+            window.sessionStorage.removeItem("trueNumber");
+            document.getElementById("year").innerHTML = "year"+year;
+            document.getElementById("month").innerHTML = "month"+month;
+            document.getElementById("day").innerHTML = "day"+day;
+            document.getElementById("weekday").innerHTML = "weekday"+weekday;
+            document.getElementById("firstday").innerHTML = "firstday"+firstday;
+            document.getElementById("thisweek").innerHTML = "thisweek"+thisweek;
+            console.log(max);
+            graphCal();
+            const tds = Array.from(document.getElementsByTagName("td"));
+            tds.map(tds => {
+              tds.setAttribute("onclick", "select(this.id)");
+            });
+            document.getElementById("loading").style.display = "none";
+          }
+          function graphCal() {
+            var week = 1;
+            document.getElementById("t1"+firstday).innerHTML = "1";
+            for(i=firstday;i<8;i++){
+              document.getElementById("t"+week+i).innerHTML=i-firstday+1;
+            }
+            for(week=2;week<6;week++){
+              for(i=1;i<8;i++){
+                if(i-firstday+7*(week-1)<max){
+                  document.getElementById("t"+week+i).innerHTML=i-firstday+7*(week-1)+1;
+                }
+              }
+            }
+              for(i=firstday-1;i>0;i--){
+                document.getElementById("t1"+i).innerHTML=maxbefore-(firstday-i)+1;
+                document.getElementById("t1"+i).classList.add("greyCal");
+              }
+              for(i=endDay+1;i<8;i++) {
+                document.getElementById("t5"+i).innerHTML=i-endDay;
+                document.getElementById("t5"+i).classList.add("greyCal");
+              }
+            document.getElementById("t"+thisweek+weekday).classList.add("currentDay");
+            console.log(document.getElementById("t"+thisweek+weekday));
+            document.getElementById("month-year").innerHTML = monthName+" "+year;
+          };
+          async function select(id) {
+            let all = document.querySelectorAll(".selected");
+            all.forEach(element => {
+              element.classList.remove("selected");
+            });
+            document.getElementById(id).classList.toggle("selected");
+            console.log(id);
+            window.sessionStorage.setItem("selected", id);
+          }
+          selectedDays.oninput = async function () {
+            let selected = window.sessionStorage.getItem("selected");
+            convert(selected);
+            let trueNumber = window.sessionStorage.getItem("trueNumber");
+            let current = document.getElementById(selected);
+            current.style.borderRadius = "25px 0px 0px 25px";
+            console.log(selectedDays.value);
+            console.log(selected);
+            console.log(trueNumber);
+            let pre = document.querySelectorAll(".daySelected");
+            pre.forEach(z => {
+              z.classList.remove("daySelected");
+              z.style.background = "white";
+            });
+            for(i=0;i<parseInt(selectedDays.value)+1;i++) {
+              if(i<parseInt(selectedDays.value)) {
+                let cCurrent = parseInt(trueNumber)+i;
+                convertBack(cCurrent);
+                let id = window.sessionStorage.getItem("convertedNumber");
+                document.getElementById(id).classList.add("daySelected");
+                document.getElementById(id).style.borderRadius = "0px";
+                document.getElementById(id).style.background = "var(--primary-light)";
+                console.log(id);
+              } else {
+                let cCurrent = parseInt(trueNumber)+i;
+                convertBack(cCurrent);
+                let id = window.sessionStorage.getItem("convertedNumber");
+                document.getElementById(id).classList.add("daySelected");
+                document.getElementById(id).style.borderRadius = "0px 25px 25px 0px";
+                document.getElementById(id).style.background = "var(--primary)";
+                console.log(id);
+              }
+            }
+          };
+          function convert(id) {
+            let row = parseInt(id.charAt(1));
+            let col = parseInt(id.charAt(2));
+            console.log("row: "+row+" col: "+col);
+            let trueNumber = col+(row*7);
+            console.log("trueNumber: "+trueNumber);
+            window.sessionStorage.setItem("trueNumber", trueNumber);
+            window.sessionStorage.setItem("trueRow", row);
+            window.sessionStorage.setItem("trueCol", col);
+          }
+          function convertBack(num) {
+            let row = Math.floor(num/7);
+            let col = num-row*7+1;
+            let final = "t"+row+col;
+            console.log("num:"+num);
+            console.log("row:"+row);
+            console.log("col:"+col);
+            console.log("final"+final);
+            window.sessionStorage.setItem("convertedNumber", final);
+          }
+        </script>
+  </body>
+</html>
